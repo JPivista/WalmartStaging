@@ -89,22 +89,23 @@ const SuccessStories = () => {
                 }
               </Navbar.Brand>
             </Link>
-            <Nav className="ms-auto d-flex flex-row flex-nowrap">
 
-              {/* Register with walmart vriddhi */}
-              <Link href="/register-with-walmartvriddhi ">
-                <Button className="rounded-5 py-2 mx-4 border-0" style={{ background: '#78BE21' }}>
-                  Register for Walmart Vriddhi
-                </Button>
-              </Link>
+            <Nav className="ms-auto d-lg-flex flex-row flex-nowrap d-none">
+              <div className="d-flex flex-lg-row flex-column gap-lg-0 gap-2">
+                {/* Register with walmart vriddhi */}
+                <Link href="/register-with-walmartvriddhi ">
+                  <Button className="rounded-5 py-2 mx-4 border-0" style={{ background: '#78BE21' }}>
+                    Register for Walmart Vriddhi
+                  </Button>
+                </Link>
 
-              {/* Register with walmart vriddhi */}
-              <Link href="/register-with-walmart-marketplace">
-                <Button className="rounded-5 py-2 mx-4 border-0" style={{ background: '#FFC221' }}>
-                  Register for Walmart Marketplace
-                </Button>
-              </Link>
-
+                {/* Register with walmart vriddhi */}
+                <Link href="/register-with-walmart-marketplace">
+                  <Button className="rounded-5 py-2 mx-4 border-0" style={{ background: '#FFC221' }}>
+                    Register for Walmart Marketplace
+                  </Button>
+                </Link>
+              </div>
               <Form className="px-4 m-tm-none"
                 onSubmit={(e) => e.preventDefault()}>
                 <InputGroup className="">
@@ -179,6 +180,50 @@ const SuccessStories = () => {
                 </Nav>
               </Offcanvas.Body>
             </Navbar.Offcanvas>
+
+
+            <Nav className="d-flex flex-row flex-nowrap d-lg-none ">
+              <div className="d-flex flex-lg-row flex-column gap-lg-0 gap-2">
+                {/* Register with walmart vriddhi */}
+                <Link href="/register-with-walmartvriddhi ">
+                  <Button className="rounded-5 py-2 mx-4 border-0" style={{ background: '#78BE21' }}>
+                    Register for Walmart Vriddhi
+                  </Button>
+                </Link>
+
+                {/* Register with walmart vriddhi */}
+                <Link href="/register-with-walmart-marketplace">
+                  <Button className="rounded-5 py-2 mx-4 border-0" style={{ background: '#FFC221' }}>
+                    Register for Walmart Marketplace
+                  </Button>
+                </Link>
+              </div>
+              <Form className="px-4 m-tm-none"
+                onSubmit={(e) => e.preventDefault()}>
+                <InputGroup className="">
+                  <Form.Control
+                    type="text "
+                    placeholder="Search...."
+                    aria-label="Search...."
+                    aria-describedby="basic-addon2"
+                    className="search"
+                    value={val}
+                    onChange={(e) => setVal(e.target.value)}
+
+                  />
+                  <Button variant="outline-secondary" id="button-addon2" className="src-button">
+                    <FaSistrix size={25} />
+                  </Button>
+                </InputGroup>
+                {error.show && <div className="error">{error.msg}</div>}
+              </Form>
+
+              {/* <Link href="/register-with-walmartvriddhi ">
+                <Button className="register mx-4" > Register</Button>
+              </Link> */}
+
+            </Nav>
+
           </Container>
         </Navbar>
 
