@@ -31,7 +31,6 @@ export default function App() {
         // Add any additional state variables that need to be reset
     };
 
-
     useEffect(() => {
         const script = document.createElement('script');
         script.src = 'https://www.google.com/recaptcha/api.js?render=6Lc01sspAAAAADM8fQcICBwBT2M62nMi-_UFynYm';
@@ -187,9 +186,6 @@ export default function App() {
     // busness type function end here
 
     // state wise city function start here 
-
-
-
     const [post, setPost] = React.useState(null);
     const [errors, setErrors] = useState({});
     const [error, setError] = useState('');
@@ -208,6 +204,9 @@ export default function App() {
     const [isCheckboxChecked, setIsCheckboxChecked] = useState(true);
     const [selectCountry, SetSelectCountry] = useState('IN');
     const [selectState, SetSelectState] = useState('KA');
+
+    const [yourExporting, setExporting] = React.useState('yes');
+    const [youreCommerce, seteCommerce] = React.useState('yes');
 
 
     const router = useRouter();
@@ -312,6 +311,15 @@ export default function App() {
         field: 'yourPhone',
         message: 'invalid phone number'
     }
+
+
+    const handleExportingChange = (e) => {
+        setExporting(e.target.value);
+    };
+
+    const handleECommerceChange = (e) => {
+        seteCommerce(e.target.value);
+    };
 
 
     // recently addded code for validation
@@ -424,18 +432,12 @@ export default function App() {
         } catch (err) {
             setError('An error occurred. Please try again.');
         }
-
-
-
     };
 
     function createPost() {
-
         setIsCheckboxChecked(true);
         setErrors({});
-
-
-        axios.post(`${configData.SERVER_FROM}contact-form-7/v1/contact-forms/27146/feedback`,
+        axios.post(`${configData.SERVER_FROM}contact-form-7/v1/contact-forms/27578/feedback`,
             {
                 'yourBusiness': { yourBusiness },
                 'yourType': { yourType },
@@ -445,6 +447,8 @@ export default function App() {
                 'yourCity': { yourCity },
                 'yourPhone': { yourPhone },
                 'yourEmail': { yourEmail },
+                'yourExporting': { yourExporting },
+                'youreCommerce': { youreCommerce },
                 'selectedSource': { selectedSource },
                 'otherSource': { otherSource },
                 'yourDate': { yourDate },
@@ -457,7 +461,6 @@ export default function App() {
             headers: {
                 "Content-Type": 'multipart/form-data',
             }
-
         })
 
             .then((response) => {
@@ -477,10 +480,10 @@ export default function App() {
                     document.getElementById("yourCity").value = "";
                     document.getElementById("yourPhone").value = "";
                     document.getElementById("yourEmail").value = "";
+                    // document.getElementById("yourExporting").value = "";
+                    // document.getElementById("youreCommerce").value = "";
                     document.getElementById("selectedSource").value = "";
                     //document.getElementById("otherSource").value = "";
-
-
                 }
                 else if (msg == 'validation_failed') {
                     const fieldErrors = {};
@@ -536,28 +539,72 @@ export default function App() {
             />
             <Header />
             <Container className="reg-page p-0 " fluid >
-                <p className="fs-4  text-center pt-5">Fill the form to be a part of the Walmart Vriddhi program and unlock your business growth!</p>
+                <p className="fs-4  text-center pt-5">
+                    Fill the form to be a part of the Walmart Marketplace and unlock your business growth!
+                </p>
                 <Container className="p-4 px-4 reg-wid">
                     <Row>
-                        {/* <Col className="wbg-white d-sm-none" sm={5}>
-                            
-                            <Image
-                                src='/images/registration_banner.png'
-                                width="400"
-                                height="700"
-                                background='no-repeat'
-                                background-size='cover'
-                                isResponsive
-                                className="banner-img d-flex align-items-end"
-                                lazyLoad
-                            />
-
-                        </Col> */}
                         <Col className="wbg-white p-2 g-0" sm={6} xs={12}>
                             <h3 className="text-center">Register</h3>
+                            <hr style={{ background: '#FFC221' }} className="mx-4 pt-1 border-0" />
                             <form
-
                                 style={{ margin: '20px' }}>
+
+                                <div className="mb-3">
+                                    <label className="form-label">Are you exporting?</label>
+                                    <div>
+                                        <label>
+                                            <input
+                                                type="radio"
+                                                value="yes"
+                                                checked={yourExporting === "yes"}
+                                                onChange={handleExportingChange}
+                                            />
+                                            <span className="ps-1">
+                                                Yes
+                                            </span>
+                                        </label>
+                                        <label className="ms-3">
+                                            <input
+                                                type="radio"
+                                                value="no"
+                                                checked={yourExporting === "no"}
+                                                onChange={handleExportingChange}
+                                            />
+                                            <span className="ps-1">
+                                                No
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div className="mb-3">
+                                    <label className="form-label">Do you have eCommerce experience?</label>
+                                    <div>
+                                        <label>
+                                            <input
+                                                type="radio"
+                                                value="yes"
+                                                checked={youreCommerce === "yes"}
+                                                onChange={handleECommerceChange}
+                                            />
+                                            <span className="ps-1">
+                                                Yes
+                                            </span>
+                                        </label>
+                                        <label className="ms-3">
+                                            <input
+                                                type="radio"
+                                                value="no"
+                                                checked={youreCommerce === "no"}
+                                                onChange={handleECommerceChange}
+                                            />
+                                            <span className="ps-1">
+                                                No
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
 
                                 <div className="mb-3" >
                                     <label className="form-label"><span className="errors">*</span>Business Name:</label>
@@ -779,7 +826,7 @@ export default function App() {
                         <Col className="wbg-white m-tm-none p-0" sm={6}>
 
                             <Image
-                                src='/images/register_img.png'
+                                src='/images/register_img_marketplace.png'
                                 width="100"
                                 height="100"
                                 background='no-repeat'

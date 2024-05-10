@@ -20,7 +20,7 @@ const SuccessStories = () => {
   const [error, setError] = useState({});
   const [query, setQuery] = useState();
   const [end, setEnd] = useState(true);
-  const [showLogo , setShowLogo]= useState(true)
+  const [showLogo, setShowLogo] = useState(true)
   const API_ENDPOINT = `${configData.SERVER_URL}posts?_embed&search=`;
 
   const fetchMovies = async () => {
@@ -44,9 +44,9 @@ const SuccessStories = () => {
     }
   };
 
-  
+
   const [val, setVal] = useState(query);
-   const debouncedVal = useDebounce(val, 1000);
+  const debouncedVal = useDebounce(val, 1000);
 
   useEffect(() => {
     if (debouncedVal) {
@@ -56,7 +56,7 @@ const SuccessStories = () => {
 
   useEffect(() => {
     fetchMovies();
-    
+
     if (pathname === '/marketplace') {
       setShowLogo(false)
     }
@@ -70,8 +70,6 @@ const SuccessStories = () => {
   return (
     <div>
 
-    
-
 
 
       {[false].map((expand) => (
@@ -80,44 +78,58 @@ const SuccessStories = () => {
             <Link href="/">
               <Navbar.Brand >
                 {
-                  showLogo?
-                (<Image
-                  src='/images/Walmart-Vriddhi-logo.svg'
-                  alt="walmart Vriddhi"
-                  width={400}
-                  height={90}
-                  className="logo-img"
-                  
-                    />) : (<div style={{height:'60px'}}></div>)
-}
+                  showLogo ?
+                    (<Image
+                      src='/images/Walmart-Vriddhi-logo.svg'
+                      alt="walmart Vriddhi"
+                      width={400}
+                      height={90}
+                      className="logo-img"
+                    />) : (<div style={{ height: '60px' }}></div>)
+                }
               </Navbar.Brand>
             </Link>
             <Nav className="ms-auto d-flex flex-row flex-nowrap">
-                <Form className="px-4 m-tm-none"
-                  onSubmit={(e) => e.preventDefault()}>
-                  <InputGroup className="">
-                    <Form.Control
-                      type="text "
-                      placeholder="Search...."
-                      aria-label="Search...."
-                      aria-describedby="basic-addon2"
-                      className="search"
-                      value={val}
-                      onChange={(e) => setVal(e.target.value)}
 
-                    />
-                    <Button variant="outline-secondary" id="button-addon2" className="src-button">
-                      <FaSistrix size={25} />
-                    </Button>
-                  </InputGroup>
-                  {error.show && <div className="error">{error.msg}</div>}
-                </Form>
+              {/* Register with walmart vriddhi */}
+              <Link href="/register-with-walmartvriddhi ">
+                <Button className="rounded-5 py-2 mx-4 border-0" style={{ background: '#78BE21' }}>
+                  Register for Walmart Vriddhi
+                </Button>
+              </Link>
 
-                <Link href="/register-with-walmartvriddhi ">
-                  <Button className="register mx-4" > Register</Button>
-                </Link>
+              {/* Register with walmart vriddhi */}
+              <Link href="/register-with-walmart-marketplace">
+                <Button className="rounded-5 py-2 mx-4 border-0" style={{ background: '#FFC221' }}>
+                  Register for Walmart Marketplace
+                </Button>
+              </Link>
 
-              </Nav>
+              <Form className="px-4 m-tm-none"
+                onSubmit={(e) => e.preventDefault()}>
+                <InputGroup className="">
+                  <Form.Control
+                    type="text "
+                    placeholder="Search...."
+                    aria-label="Search...."
+                    aria-describedby="basic-addon2"
+                    className="search"
+                    value={val}
+                    onChange={(e) => setVal(e.target.value)}
+
+                  />
+                  <Button variant="outline-secondary" id="button-addon2" className="src-button">
+                    <FaSistrix size={25} />
+                  </Button>
+                </InputGroup>
+                {error.show && <div className="error">{error.msg}</div>}
+              </Form>
+
+              {/* <Link href="/register-with-walmartvriddhi ">
+                <Button className="register mx-4" > Register</Button>
+              </Link> */}
+
+            </Nav>
 
 
             {/* Toggle busston start from here */}
@@ -156,14 +168,14 @@ const SuccessStories = () => {
                     <li className="nav-item">
                       <Link href="/marketplace" className={pathname == "/marketplace" ? "active nav-link px-5" : "nav-link px-5"} aria-current="page" >Walmart Marketplace</Link>
                     </li>
- 		    <li className="nav-item">
+                    <li className="nav-item">
                       <Link href="/walmart-vriddhi-msme-summit-2024" className={pathname == "/walmart-vriddhi-msme-summit-2024" ? "active nav-link px-5" : "nav-link px-5"} aria-current="page" >MSME Summit 2024</Link>
                     </li>
                     <li className="nav-item">
-                      <Link href="/contact-us" className= {pathname == "/contact-us" ? "active nav-link px-5" : "nav-link px-5"}  aria-current="page" >Contact us</Link>
+                      <Link href="/contact-us" className={pathname == "/contact-us" ? "active nav-link px-5" : "nav-link px-5"} aria-current="page">Contact us</Link>
                     </li>
                   </ul>
-                  
+
                 </Nav>
               </Offcanvas.Body>
             </Navbar.Offcanvas>
@@ -173,50 +185,44 @@ const SuccessStories = () => {
       ))}
 
       <Container className="search-box">
+        {val &&
+          <Row>
+            {
+              movies.map((post, index) => {
+                console.log(post);
 
-      {val && 
+                let type = ''; // Declare type outside the if conditions
 
-            <Row>
+                if (post['categories'][0] === 12) {
+                  type = '/success-story';
+                }
 
-{
-  movies.map((post, index) => {
-    console.log(post);
-  
-    let type = ''; // Declare type outside the if conditions
-  
-    if (post['categories'][0] === 12) {
-      type = '/success-story'; 
-    }
+                if (post['categories'][0] === 13) {
+                  type = '/newsroom';
+                }
 
-    if (post['categories'][0] === 13) {
-      type = '/newsroom'; 
-    }
-
-    return (
-      <Link key={index} href={`${type}/${post['slug']}`} className="search-text" target="_blank">
-        <Row className="py-3">
-          <Col sm={4}>
-            <Image
-              src={post['_embedded']['wp:featuredmedia'][0]['source_url']}
-              alt={post['title']['rendered']}
-              width={100}
-              height={100}
-              className="search-img"
-            />
-          </Col>
-          <Col className="d-flex justify-content-center align-items-center">
-            <span className="fs-5" dangerouslySetInnerHTML={{ __html: post['title']['rendered'] }} />
-          </Col>
-        </Row>
-      </Link>
-    );
-  })
-}
-          </Row>
-            
+                return (
+                  <Link key={index} href={`${type}/${post['slug']}`} className="search-text" target="_blank">
+                    <Row className="py-3">
+                      <Col sm={4}>
+                        <Image
+                          src={post['_embedded']['wp:featuredmedia'][0]['source_url']}
+                          alt={post['title']['rendered']}
+                          width={100}
+                          height={100}
+                          className="search-img"
+                        />
+                      </Col>
+                      <Col className="d-flex justify-content-center align-items-center">
+                        <span className="fs-5" dangerouslySetInnerHTML={{ __html: post['title']['rendered'] }} />
+                      </Col>
+                    </Row>
+                  </Link>
+                );
+              })
             }
-        
-        
+          </Row>
+        }
       </Container>
 
 
