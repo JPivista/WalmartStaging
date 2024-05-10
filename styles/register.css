@@ -1,0 +1,20 @@
+.registers{
+    padding: 9px !important;
+    border-radius: 30px !important;
+    width: 115px !important;
+    height: 45px !important;
+    background-color: #fff !important;
+    font-weight: 500 !important;
+    color: #2f6eb5;
+    border: 2px solid #2f6eb5 !important;
+}
+.disabled {
+    padding: 9px !important;
+    border-radius: 30px !important;
+    width: 115px !important;
+    height: 45px !important;
+    background-color: #fff !important;
+    font-weight: 500 !important;
+    color: #2f6eb5;
+    border: 2px solid #2f6eb5 !important;
+}
