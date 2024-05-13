@@ -25,6 +25,8 @@ export default function App() {
         setState('');
         setCity('');
         setSelectedSource("");
+        setExporting('');
+        seteCommerce('');
         setOtherSource("");
         SetSelectCountry('IN');
         SetSelectState('KA');
