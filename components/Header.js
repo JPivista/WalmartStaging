@@ -186,14 +186,14 @@ const SuccessStories = () => {
               <div className="d-flex flex-lg-row flex-column gap-lg-0 gap-2">
                 {/* Register with walmart vriddhi */}
                 <Link href="/register-with-walmartvriddhi ">
-                  <Button className="rounded-5 py-2 mx-4 border-0" style={{ background: '#78BE21' }}>
+                  <Button className="rounded-5 py-2 mx-4 border-0 w-100" style={{ background: '#78BE21' }}>
                     Register for Walmart Vriddhi
                   </Button>
                 </Link>
 
                 {/* Register with walmart vriddhi */}
-                <Link href="/register-with-walmart-marketplace">
-                  <Button className="rounded-5 py-2 mx-4 border-0" style={{ background: '#FFC221' }}>
+                <Link href="/register-with-walmart-marketplace ">
+                  <Button className="rounded-5 py-2 mx-4 border-0 w-100" style={{ background: '#FFC221' }}>
                     Register for Walmart Marketplace
                   </Button>
                 </Link>
