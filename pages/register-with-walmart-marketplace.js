@@ -63,7 +63,6 @@ export default function App() {
     };
 
     const sourceList = [
-
         { name: "Industry Association" },
         { name: "State Government" },
         { name: "NSIC" },
@@ -195,7 +194,7 @@ export default function App() {
     const [yourType, setFromTypes] = React.useState(null);
     const [yourName, setName] = React.useState(null);
     const [yourSector, setFromSectors] = React.useState(null);
-    const [yourPhone, setPhone] = React.useState(null);
+    const [yourPhone, setPhone] = React.useState('');
     const [yourEmail, setEmail] = React.useState(null);
     const [yourState, setState] = React.useState(null);
     const [yourCity, setCity] = React.useState(null);
@@ -274,9 +273,7 @@ export default function App() {
         else {
             setCity(selectedLabel)
         }
-
         //SetSelectState(selectedValue)
-
         //console.log(selectedLabel)
     };
 
@@ -291,12 +288,14 @@ export default function App() {
     }
 
     const notAllowedDomains = ['test.com', 'sample.com', 'example.com', 'testing.com'];
+
     function isValidEmail(email) {
         const [_, domain] = email.split('@');
         return notAllowedDomains.includes(domain);
     }
 
     const businessRegex = /^[a-zA-Z0-9\s]*$/
+
     const bussErrors = {
         field: 'yourBusiness',
         message: 'invalid character'
@@ -314,7 +313,6 @@ export default function App() {
         message: 'invalid phone number'
     }
 
-
     const handleExportingChange = (e) => {
         setExporting(e.target.value);
     };
@@ -323,14 +321,12 @@ export default function App() {
         seteCommerce(e.target.value);
     };
 
-
     // recently addded code for validation
     const handleTextChange = e => {
         const value = e.target.value;
         const fname = e.target.name;
 
         if (fname === 'yourBusiness') {
-
             if (!businessRegex.test(value)) {
                 console.log('invalid details')
                 const fieldErrors = {}
@@ -360,7 +356,6 @@ export default function App() {
                 setName(value)
                 setErrors();
             }
-
         }
 
         if (fname === 'yourPhone') {
@@ -377,7 +372,6 @@ export default function App() {
                 setPhone(value)
                 setErrors();
             }
-
         }
         if (fname === 'yourEmail') {
             if (!emailRegex.test(value)) {
@@ -402,11 +396,8 @@ export default function App() {
                 setErrors(fieldErrors);
             } else {
                 console.log('Email domain is allowed');
-
             }
-
         }
-
     }
     // changes end here
 
@@ -804,7 +795,8 @@ export default function App() {
 
                                 <button type='submit'
                                     className={`btn btn-primary register pb-4 ${!isCheckboxChecked ? 'disabled' : ''}`}
-                                    onClick={handleSubmit}>
+                                    onClick={handleSubmit}
+                                >
                                     {isCheckboxChecked ? 'Submit' :
                                         (<>
                                             Please wait..<RotatingLines
