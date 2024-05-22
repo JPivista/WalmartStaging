@@ -1,5 +1,5 @@
-import React, { useEffect, useState,useCallback } from "react";
-import { Card, Button, Col, Row, Container} from 'react-bootstrap';
+import React, { useEffect, useState, useCallback } from "react";
+import { Card, Button, Col, Row, Container } from 'react-bootstrap';
 import Link from 'next/link'
 import Header from '../components/Header';
 import Brand from '../components/BrandLogo';
@@ -24,14 +24,14 @@ const SuccessStories = () => {
   const [next, setNext] = useState();
   const [total, setTotal] = useState(0);
   const [end, setEnd] = useState(false);
-  
+
   const title = "Business Owner Training, Business Owner Training Programs, Sell Products Online in India";
   const desc = "The MSME spotlight and industry connect series is a collection of webinars that define Walmart Vriddhi’s MSME business training programs Learn more about these webinars here";
   const banner = '/images/success_banner.jpeg';
-  const url = 'https://www.walmartvriddhi.org/success-stories/'; 
-  
+  const url = 'https://www.walmartvriddhi.org/success-stories/';
+
   const fetchMovies = async () => {
-    setLoading(true); 
+    setLoading(true);
     let url = "";
     const urlPage = `${page}`;
     url = `${configData.SERVER_URL}posts?_embed&categories[]=12&&production[]=${configData.SERVER}&status[]=publish&per_page=${urlPage}`; //Staging Enviroment
@@ -40,7 +40,7 @@ const SuccessStories = () => {
       const response = await fetch(url);
       const data = await response.json();
       if (data.length === 0) {
-        setLoading(false); 
+        setLoading(false);
       } else {
         setMovies(data);
       }
@@ -68,11 +68,11 @@ const SuccessStories = () => {
     fetchMovies();
     fetchNos();
     debouncedFetchMovies();
-  }, [page,debouncedFetchMovies]);
+  }, [page, debouncedFetchMovies]);
 
-  
+
   const loadMore = () => {
-   // console.log(page)
+    // console.log(page)
     if (page >= total) {
       //console.log("Reached end of posts");
       setEnd(true);
@@ -88,10 +88,10 @@ const SuccessStories = () => {
   return (
     <div>
       <NextSeo
-         noindex={true}
-         nofollow={true}
+        noindex={true}
+        nofollow={true}
         title={title}
-      description={desc}
+        description={desc}
         canonical={pathname}
         openGraph={{
           url: pathname,
@@ -99,14 +99,14 @@ const SuccessStories = () => {
           description: desc,
           images: [
             {
-              url:banner,
+              url: banner,
               width: 800,
               height: 600,
               alt: 'Walmart Vridhi',
               type: 'image/jpeg',
             },
             {
-              url:banner,
+              url: banner,
               width: 900,
               height: 800,
               alt: 'Walmart Vridhi',
@@ -122,7 +122,7 @@ const SuccessStories = () => {
           site: '@site',
           cardType: 'summary_large_image',
         }}
-    />
+      />
       <Header />
       <Image
         src={banner}
@@ -132,7 +132,7 @@ const SuccessStories = () => {
         background-size='cover'
         className="banner-img w-100 h-auto"
         alt="walmart vriddhi"
-        
+
       />
       <Brand />
       <Container className="text-center wbg-light-gy">
@@ -142,9 +142,9 @@ const SuccessStories = () => {
       </Container>
 
       <Success />
-      <Popups/>
-      <Floating/> 
-      <NewsLetter/>
+      <Popups />
+      <Floating />
+      <NewsLetter />
       <Footer />
 
 

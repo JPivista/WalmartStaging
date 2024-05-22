@@ -25,10 +25,10 @@ function Summit() {
   return (
     <>
       <NextSeo
-         noindex={false}
-         nofollow={false}
-      title= {title}
-      description={desc}
+        noindex={false}
+        nofollow={false}
+        title={title}
+        description={desc}
         canonical={url}
         openGraph={{
           url: url,
@@ -53,23 +53,23 @@ function Summit() {
             { url: banner },
           ],
           siteName: title,
-          keywords: ['Walmart Vriddhi MSME Summit 2024', 'MSME growth program benefits', 'MSME growth mentors','MSME growth journey program in India','supplier development program'],
+          keywords: ['Walmart Vriddhi MSME Summit 2024', 'MSME growth program benefits', 'MSME growth mentors', 'MSME growth journey program in India', 'supplier development program'],
         }}
         twitter={{
           handle: '@handle',
           site: '@site',
           cardType: 'summary_large_image',
         }}
-    />
-          <Header />
-          <Banner />
-          <Brand />
-          <Submit />
-          <SubmitHight />
-          <Flipkart/>
-          <Gallery />
-          <Register/>
-          <Footer />
+      />
+      <Header />
+      <Banner />
+      <Brand />
+      <Submit />
+      <SubmitHight />
+      <Flipkart />
+      <Gallery />
+      <Register />
+      <Footer />
     </>
   )
 }

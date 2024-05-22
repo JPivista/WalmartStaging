@@ -230,7 +230,7 @@ export default function App() {
 
 
     //console.log('utm_source:' + utm_source);
-    //console.log('utm_medium:' + utm_medium);
+    //console.log('utm_medium:' + utm_medium); 
     //console.log('utm_campaign:' + utm_campaign);
     //console.log('utm_id' + utm_id);
 
