@@ -131,8 +131,8 @@ const post = ({ data }) => {
                         <Col><div dangerouslySetInnerHTML={{ __html: post['acf']['paragraph-heading'] }} className=" fs-6 bogle-italic p-3 walmart-default"></div></Col>
                       </Row>
                       <Row className="p-3">
-                        <Col xs={12} lg={6}><Image src={post['acf']['product-image-left']['url']} alt="Walmart Vriddhi" width={300} height={300} className="w-100" /></Col>
-                        <Col xs={12} lg={6}><Image src={post['acf']['product-image-right']['url']} alt="Walmart Vriddhi" width={300} height={300} className="w-100" /></Col>
+                        <Col xs={12} lg={6}><Image src={post['acf']['product-image-left']['url']} alt="Walmart Vriddhi fluid" className="w-100 mb-3" /></Col>
+                        <Col xs={12} lg={6}><Image src={post['acf']['product-image-right']['url']} alt="Walmart Vriddhi"className="w-100" /></Col>
 
                       </Row>
                       <Row className="p-3">
