@@ -286,7 +286,7 @@ function MarketPlace() {
 
       <Container>
         <Col className='mt-5 mb-2 text-center'>
-          {/* Register with walmart vriddhi */}
+          {/* Register with walmart vriddhi campaign link */}
           <Link href="https://seller.walmart.com/signup?q=&origin=marketing_campaign&src=TestIndiaCampaign_Vriddhi&exp=MjAyNS0wMy0xNA==" target='_blank'>
             <Button className="rounded-5 py-2 mx-4 fw-bold border-0" style={{ background: '#FFC221' }}>
               Register on the Walmart Seller Center
