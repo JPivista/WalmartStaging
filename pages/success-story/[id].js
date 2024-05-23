@@ -80,13 +80,18 @@ const post = ({ data }) => {
                     height={400}
                     priority
                   />
+
                 </Container>
                 <Brand />
                 <Container className="pt-4 pb-4">
-                  <Row>
-                    <Col className="pri_cat"><p className='bogle-bold fs-5 margin-center'>MSME SuperPower:</p></Col>
-                    <Col className="pri_ico"><Image src={post['acf']['primary_category_icon']['url']} className="primary_cat" alt={post['title']['rendered']} /></Col>
-                  </Row>
+                  <div className='d-flex flex-lg-row flex-column justify-content-center align-items-center'>
+                    <div className="  ">
+                      <p className='bogle-bold fs-5 margin-center'>MSME SuperPower:</p>
+                    </div>
+                    <div className="  ">
+                      <Image src={post['acf']['primary_category_icon']['url']} className=" fluid " alt={post['title']['rendered']} />
+                    </div>
+                  </div>
                 </Container>
 
                 <Container className="text-center mx-auto">
@@ -111,9 +116,9 @@ const post = ({ data }) => {
                       <p className="text-white fs-3 bogle-medium">{post['acf']['heading-1']}</p>
                     </Row>
 
-                    <Row>
-                      <Col><div dangerouslySetInnerHTML={{ __html: post['acf']['cloumn-1_heading-1'] }} className="text-white fs-5 bogle-medium"></div></Col>
-                      <Col><div dangerouslySetInnerHTML={{ __html: post['acf']['cloumn-2_heading-1'] }} className="text-white fs-5 bogle-medium"></div></Col>
+                    <Row >
+                      <Col lg={4} sm={12}><div dangerouslySetInnerHTML={{ __html: post['acf']['cloumn-1_heading-1'] }} className="text-white fs-5 bogle-medium"></div></Col>
+                      <Col lg={4} sm={12}><div dangerouslySetInnerHTML={{ __html: post['acf']['cloumn-2_heading-1'] }} className="text-white fs-5 bogle-medium"></div></Col>
                       <Col><div dangerouslySetInnerHTML={{ __html: post['acf']['cloumn-3_heading-1'] }} className="text-white fs-5 bogle-medium"></div></Col>
                     </Row>
 
