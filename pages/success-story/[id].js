@@ -86,10 +86,10 @@ const post = ({ data }) => {
                 <Container className="pt-4 pb-4">
                   <div className='d-flex flex-lg-row flex-column justify-content-center align-items-center'>
                     <div className="  ">
-                      <p className='bogle-bold fs-5 margin-center'>MSME SuperPower:</p>
+                      <p className='bogle-bold fs-5 margin-center p-2'>MSME SuperPower: </p>
                     </div>
                     <div className="  ">
-                      <Image src={post['acf']['primary_category_icon']['url']} className=" fluid " alt={post['title']['rendered']} />
+                      <Image src={post['acf']['primary_category_icon']['url']} className=" fluid" style={{height:"75px"}} alt={post['title']['rendered']} />
                     </div>
                   </div>
                 </Container>
