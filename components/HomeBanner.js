@@ -6,7 +6,7 @@ import Image from 'next/image'
 
 const Home = () => {
   return (
-    <video className="w-100" autoPlay muted>
+    <video className="w-100" autoPlay muted controls loop>
     <source src="https://docs.walmartvriddhi.org/wp-content/uploads/2024/05/Approved-WV-MSME-Summit-2024-Sizzle-Real.mp4" type="video/mp4" />
   </video>
 //    <Carousel controls={false}>
