@@ -71,7 +71,6 @@ const SearchResults = () => {
                 if (post['categories'][0] === 125) {
                 }
 
-
                 return (
                   // <Link key={post.id} href={`${type}/${post['slug']}`} className="search-text" target="_blank">
 
