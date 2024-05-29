@@ -48,10 +48,10 @@ const Webinars = ({ webinarvideo, spotlightvideo }) => {
   return (
     <>
       <NextSeo
-         noindex={true}
-         nofollow={true}
-      title="MSME Business Training, Business Training Programs, Small Business Training Programs, Business Training Programs Online"
-      description="Walmart Vriddhi is a supplier development program tailored to help MSMEs grow their business by expanding their domestic and international markets Know more about us here"
+        noindex={true}
+        nofollow={true}
+        title="MSME Business Training, Business Training Programs, Small Business Training Programs, Business Training Programs Online"
+        description="Walmart Vriddhi is a supplier development program tailored to help MSMEs grow their business by expanding their domestic and international markets Know more about us here"
         canonical=''
         openGraph={{
           url: '',
@@ -59,14 +59,14 @@ const Webinars = ({ webinarvideo, spotlightvideo }) => {
           description: 'Walmart Vriddhi is a supplier development program tailored to help MSMEs grow their business by expanding their domestic and international markets Know more about us here',
           images: [
             {
-              url:'/images/banner_webinar.jpeg',
+              url: '/images/banner_webinar.jpeg',
               width: 800,
               height: 600,
               alt: 'Walmart Vridhi',
               type: 'image/jpeg',
             },
             {
-              url:'/images/banner_webinar.jpeg',
+              url: '/images/banner_webinar.jpeg',
               width: 900,
               height: 800,
               alt: 'Walmart Vridhi',
@@ -82,7 +82,7 @@ const Webinars = ({ webinarvideo, spotlightvideo }) => {
           site: '@site',
           cardType: 'summary_large_image',
         }}
-    />
+      />
       <Header />
       <Image
         src="/images/banner_webinar.jpeg"
@@ -109,7 +109,7 @@ const Webinars = ({ webinarvideo, spotlightvideo }) => {
               <span className="eael-tab-title walmart-default bogle-medium">Industry Connect Series</span>
             </div>
             <div className="tab-item">
-              <Image src="/images/peoples.svg" alt="msme training Program online" className="img" width={300} height={90}/>
+              <Image src="/images/peoples.svg" alt="msme training Program online" className="img" width={300} height={90} />
               <span className="eael-tab-title walmart-default bogle-medium">MSME Spotlight Series</span>
             </div>
 
@@ -121,19 +121,19 @@ const Webinars = ({ webinarvideo, spotlightvideo }) => {
           {/* Webinars tab */}
           <div className="tab-content">
             <div className="tab-pane active">
-            <IndustryConnect/>
+              <IndustryConnect />
             </div>
 
             {/* Spotlights tab */}
             <div className="tab-pane">
-            <SpotLight/>
+              <SpotLight />
             </div>
           </div>
         </Container>
       </Container>
-      <Popups/>
-            <Floating/> 
-            <NewsLetter/>
+      <Popups />
+      <Floating />
+      <NewsLetter />
       <Footer />
     </>
   );

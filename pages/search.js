@@ -26,6 +26,8 @@ const SearchResults = () => {
       const response = await fetch(url);
       if (!response.ok) throw new Error("Network response was not ok");
       const data = await response.json();
+
+
       setMovies(data);
       setLoading(false);
       if (data.length === 0) {
@@ -47,66 +49,70 @@ const SearchResults = () => {
   }, [query]);
 
   return (
-    
+
     <Container className="p-0" fluid>
-        <Header/>
+      <Header />
       {loading ? (
         <div className='text-center text-primary fs-4 p-3'>Loading...Please wait</div>
       ) : (
         <Row className='p-0 m-0'>
           {movies.length > 0 ? (
-            movies.map((post) => {
-              let type = ''; // Declare type outside the if conditions
+            movies
+              .filter(post => post['categories'][0] !== 24) // Filter out posts with category ID 24
+              .map((post) => {
+                let type = ''; // Declare type outside the if conditions
 
-              if (post['categories'][0] === 12) {
-                type = '/success-story';
-              }
+                if (post['categories'][0] === 12) {
 
-              if (post['categories'][0] === 13) {
-                type = '/newsroom';
-              }
+                }
+                if (post['categories'][0] === 13) {
+                }
 
-              return (
-                // <Link key={post.id} href={`${type}/${post['slug']}`} className="search-text" target="_blank">
-                
+                if (post['categories'][0] === 125) {
+                }
+
+
+                return (
+                  // <Link key={post.id} href={`${type}/${post['slug']}`} className="search-text" target="_blank">
+
                   <Row className="py-3 justify-content-center">
                     <Col sm={4} lg={3} md={6}>
                       {post['_embedded'] && post['_embedded']['wp:featuredmedia'] && post['_embedded']['wp:featuredmedia'][0] && (
-                       <div className='text-center ms-3'>
-                        <Link key={post.id} href={`${type}/${post['slug']}`} className="search-text" target="_blank">
-                           <Image
-                          src={post['_embedded']['wp:featuredmedia'][0]['source_url']}
-                          alt={post['title']['rendered']}
-                          width={300}
-                          height={200}
-                          className="w-lg-50"
-                        /> 
-                        </Link>
-                         
+                        <div className='text-center ms-3'>
+                          <Link key={post.id} href={`${type}/${post['slug']}`} className="search-text" target="_blank">
+                            <Image
+                              src={post['_embedded']['wp:featuredmedia'][0]['source_url']}
+                              alt={post['title']['rendered']}
+                              width={300}
+                              height={200}
+                              className="w-lg-50"
+                            />
+                          </Link>
+
                         </div>
                       )}
                     </Col>
-                    
+
                     <Col lg={4} className="d-flex justify-content-center align-items-center">
-                    <Link key={post.id} href={`${type}/${post['slug']}`} className="search-text text-center text-lg-start p-3  p-lg-0" target="_blank">
-                      <span className="fs-5" dangerouslySetInnerHTML={{ __html: post['title']['rendered'] }} />
+                      <Link key={post.id} href={`${type}/${post['slug']}`} className="search-text text-center text-lg-start p-3  p-lg-0" target="_blank">
+                        <span className="fs-5" dangerouslySetInnerHTML={{ __html: post['title']['rendered'] }} />
                       </Link>
                     </Col>
-                  
+
                   </Row>
-                // </Link>
-              );
-            })
-        ) : (
+                  // </Link>
+                );
+              })
+          ) : (
             <div className='text-center p-5 text-danger fw-bold fs-1'>
-                <NoResults/>
+              <NoResults />
             </div>
           )}
         </Row>
       )}
-      <Footer/>
+      <Footer />
     </Container>
-    
+
   );
 };
 
