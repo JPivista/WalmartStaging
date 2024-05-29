@@ -10,7 +10,7 @@ const NoResults = () => {
                         Search Query Not Found
                     </h1>
                     <h3 className='text-warning p-2'>
-                        Please Enter the Proper Value
+                        Kindly Type the Correct Query
                     </h3>
                     <Link href="/" className='btn btn-primary rounded-pill mt-4'>
                         <h3 className='text-center mt-2'>
