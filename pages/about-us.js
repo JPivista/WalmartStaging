@@ -149,7 +149,7 @@ function ContainerExample() {
             />
             <p className="mb-5 mx-3" style={{ color: '#E1E1E1' }}>Swasti, a member of the Catalyst family, was founded in 2004. Swasti co-designs demonstrable and scalable solution models for businesses in partnership with communities on the ground and influences policies nationally and internationally. Swasti is helping communities, governments, and partners shape safe, secure, healthy and more prosperous lives across the world through various initiatives that reach over 400,000 people.
               Over the past eight years, Walmart and Swasti have shared a meaningful partnership which now includes the Walmart Vriddhi program.</p>
-            <Link href="https://swastihc.org/" target="_blank" className="ab-button mb-4 mt-5 bogle-medium mx-5">Know more</Link>
+            <Link href="https://swastihc.org/" target="_blank" className="ab-button mb-4 mt-5 bogle-medium mx-3">Know more</Link>
           </Col>
           <Col className="p-0 d-flex justify-content-end">
 
