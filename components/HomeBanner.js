@@ -7,23 +7,9 @@ import Image from 'next/image'
 const Home = () => {
   return (
     <>
-            <style jsx>{`
-                .video-container {
-                    text-align: center;
-                }
-        
-                .video {
-                    width: 100%; /* Default width for mobile */
-                }
-        
-                @media (min-width: 768px) {
-                    .video {
-                        width: 75%; /* Width for desktop screens */
-                    }
-                }
-            `}</style>
+           
             <div className="video-container">
-                <video className="video" autoPlay muted controls playsInline>
+                <video className="w-100"autoPlay muted controls playsInline>
                     <source src="https://docs.walmartvriddhi.org/wp-content/uploads/2024/05/Approved-WV-MSME-Summit-2024-Sizzle-Real.mp4" type="video/mp4" />
                 </video>
             </div>
