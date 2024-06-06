@@ -1,4 +1,3 @@
-// pages/search.js
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Container, Row, Col } from 'react-bootstrap';
@@ -27,10 +26,12 @@ const SearchResults = () => {
       if (!response.ok) throw new Error("Network response was not ok");
       const data = await response.json();
 
+      // Filter out posts with category ID 24
+      const filteredData = data.filter(post => post['categories'][0] !== 24);
 
-      setMovies(data);
+      setMovies(filteredData);
       setLoading(false);
-      if (data.length === 0) {
+      if (filteredData.length === 0) {
         setError({ show: true, msg: "No results found" });
       } else {
         setError({ show: false, msg: "" });
@@ -49,59 +50,54 @@ const SearchResults = () => {
   }, [query]);
 
   return (
-
     <Container className="p-0" fluid>
       <Header />
       {loading ? (
         <div className='text-center text-primary fs-4 p-3'>Loading...Please wait</div>
+      ) : error.show ? (
+        <div className='text-center p-5 text-danger fw-bold fs-1'>
+          <NoResults />
+        </div>
       ) : (
         <Row className='p-0 m-0'>
           {movies.length > 0 ? (
-            movies
-              .filter(post => post['categories'][0] !== 24) // Filter out posts with category ID 24
-              .map((post) => {
-                let type = ''; // Declare type outside the if conditions
+            movies.map((post) => {
+              let type = ''; // Declare type outside the if conditions
 
-                if (post['categories'][0] === 12) {
+              if (post['categories'][0] === 12) {
+                type = 'type1';
+              } else if (post['categories'][0] === 13) {
+                type = 'type2';
+              } else if (post['categories'][0] === 125) {
+                type = 'type3';
+              }
 
-                }
-                if (post['categories'][0] === 13) {
-                }
+              return (
+                <Row className="py-3 justify-content-center" key={post.id}>
+                  <Col sm={4} lg={3} md={6}>
+                    {post['_embedded'] && post['_embedded']['wp:featuredmedia'] && post['_embedded']['wp:featuredmedia'][0] && (
+                      <div className='text-center ms-3'>
+                        <Link href={`${type}/${post['slug']}`} className="search-text" target="_blank">
+                          <Image
+                            src={post['_embedded']['wp:featuredmedia'][0]['source_url']}
+                            alt={post['title']['rendered']}
+                            width={300}
+                            height={200}
+                            className="w-lg-50"
+                          />
+                        </Link>
+                      </div>
+                    )}
+                  </Col>
 
-                if (post['categories'][0] === 125) {
-                }
-
-                return (
-                  // <Link key={post.id} href={`${type}/${post['slug']}`} className="search-text" target="_blank">
-
-                  <Row className="py-3 justify-content-center">
-                    <Col sm={4} lg={3} md={6}>
-                      {post['_embedded'] && post['_embedded']['wp:featuredmedia'] && post['_embedded']['wp:featuredmedia'][0] && (
-                        <div className='text-center ms-3'>
-                          <Link key={post.id} href={`${type}/${post['slug']}`} className="search-text" target="_blank">
-                            <Image
-                              src={post['_embedded']['wp:featuredmedia'][0]['source_url']}
-                              alt={post['title']['rendered']}
-                              width={300}
-                              height={200}
-                              className="w-lg-50"
-                            />
-                          </Link>
-
-                        </div>
-                      )}
-                    </Col>
-
-                    <Col lg={4} className="d-flex justify-content-center align-items-center">
-                      <Link key={post.id} href={`${type}/${post['slug']}`} className="search-text text-center text-lg-start p-3  p-lg-0" target="_blank">
-                        <span className="fs-5" dangerouslySetInnerHTML={{ __html: post['title']['rendered'] }} />
-                      </Link>
-                    </Col>
-
-                  </Row>
-                  // </Link>
-                );
-              })
+                  <Col lg={4} className="d-flex justify-content-center align-items-center">
+                    <Link href={`/${post['slug']}`} className="search-text text-center text-lg-start p-3 p-lg-0" target="_blank">
+                      <span className="fs-5" dangerouslySetInnerHTML={{ __html: post['title']['rendered'] }} />
+                    </Link>
+                  </Col>
+                </Row>
+              );
+            })
           ) : (
             <div className='text-center p-5 text-danger fw-bold fs-1'>
               <NoResults />
@@ -111,7 +107,6 @@ const SearchResults = () => {
       )}
       <Footer />
     </Container>
-
   );
 };
 

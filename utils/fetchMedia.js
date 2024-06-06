@@ -32,7 +32,7 @@ const SuccessStories = () => {
         setEnd(true);
       } else {
         setMovies(moviesData);
-          setTotal(categoriesData.count);
+        setTotal(categoriesData.count);
         setNext(categoriesData);
       }
 
@@ -62,72 +62,72 @@ const SuccessStories = () => {
 
   return (
     <div>
-     
 
-     <Container style={{ background: '#dee2e6' }} fluid>
+
+      <Container style={{ background: '#dee2e6' }} fluid>
         <Container>
-        <Row className="pt-5">
+          <Row className="pt-5">
             {
               movies.map((post, index) => {
                 return (
-              <Col sm={4} className="p-3" key={index}>
-                <Card className="border-0 rounded-0">
-                <h3 className="fs-6 fw-lighter position-absolute wbg-main p-2 text-white rounded-bottom-2">
-                {date.format(new Date(post.date), 'MMMM DD, YYYY')}
-                </h3>
-                {post['_embedded']['wp:featuredmedia'][0]['source_url'] && (
-                  <Image
-                    src={post['_embedded']['wp:featuredmedia'][0]['source_url']}
-                    alt={post['title']['rendered']}
-                    className="w-100 h-100"
-                    width={335}
-                      height={250}
-                                />
-                                
-                            )}
-                            <div className="p-3 media text-center">
-                            <h3 className="fs-6 bogle-medium"> {`${post['acf']['media_name']}`}</h3>
-                            {/* <h3 dangerouslySetInnerHTML={{ __html: post['acf']['source'] }} className="fs-6 authors bogle-medium"></h3> */}
-                            </div>
-                            <div className="bg-shadow">
-                                    
-                                </div>
-                  <Card.Body className=" text-center">
-                    <Card.Title className="fs-5 bogle-medium mb-4" style={{ minHeight: 80, height: 95 }} dangerouslySetInnerHTML={{ __html: post['title']['rendered'] }} />
-                    <Link key={index} href={`${post['acf']['media_link']}`} target="_blank">
-                      <Button variant="primary" className="news_btn fs-5">Read more</Button>
-                    </Link>
-                  </Card.Body>
-                </Card>
-              </Col>
-              )
+                  <Col sm={4} className="p-3" key={index}>
+                    <Card className="border-0 rounded-0 h-100">
+                      <h3 className="fs-6 fw-lighter position-absolute wbg-main p-2 text-white rounded-bottom-2">
+                        {date.format(new Date(post.date), 'MMMM DD, YYYY')}
+                      </h3>
+                      {post['_embedded']['wp:featuredmedia'][0]['source_url'] && (
+                        <Image
+                          src={post['_embedded']['wp:featuredmedia'][0]['source_url']}
+                          alt={post['title']['rendered']}
+                          className="w-100 h-100"
+                          width={335}
+                          height={250}
+                        />
+
+                      )}
+                      <div className="p-3 media text-center">
+                        <h3 className="fs-6 bogle-medium"> {`${post['acf']['media_name']}`}</h3>
+                        {/* <h3 dangerouslySetInnerHTML={{ __html: post['acf']['source'] }} className="fs-6 authors bogle-medium"></h3> */}
+                      </div>
+                      <div className="bg-shadow">
+
+                      </div>
+                      <Card.Body className=" text-center">
+                        <Card.Title className="fs-5 bogle-medium mb-4" style={{ minHeight: 80, height: 95 }} dangerouslySetInnerHTML={{ __html: post['title']['rendered'] }} />
+                        <Link key={index} href={`${post['acf']['media_link']}`} target="_blank">
+                          <Button variant="primary" className="news_btn fs-5">Read more</Button>
+                        </Link>
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                )
 
 
-            })}
+              })}
           </Row>
         </Container>
       </Container>
 
 
-     
+
       <section className="section text-center mb-3 pb-5" style={{ background: '#dee2e6' }} fluid>
         {loading ? (
-        <RotatingLines
-        visible={true}
-        height="30"
-        width="30"
-        color="#fff"
-        strokeWidth="5"
-        animationDuration="0.75"
-        ariaLabel="rotating-lines-loading"
-        wrapperStyle={{}}
-        strokeColor="green"
-        wrapperClass=""/>
+          <RotatingLines
+            visible={true}
+            height="30"
+            width="30"
+            color="#fff"
+            strokeWidth="5"
+            animationDuration="0.75"
+            ariaLabel="rotating-lines-loading"
+            wrapperStyle={{}}
+            strokeColor="green"
+            wrapperClass="" />
 
         ) : (
           <div className="loadmodediv">
-          {end ? ('') : (<Button variant="primary" className="authors_btn fs-5" onClick={loadMore}  >Load more</Button>
-                    )}</div> )}
+            {end ? ('') : (<Button variant="primary" className="authors_btn fs-5" onClick={loadMore}  >Load more</Button>
+            )}</div>)}
       </section>
 
 
