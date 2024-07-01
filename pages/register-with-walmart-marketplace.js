@@ -572,7 +572,7 @@ export default function App() {
                                 </div>
 
                                 <div className="mb-3">
-                                    <label className="form-label">Do you have eCommerce experience?</label>
+                                    <label className="form-label">Do you have eCommerce experience? (Amazon/Etsy/Shopify/eBay etc.)</label>
                                     <div>
                                         <label>
                                             <input
