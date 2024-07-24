@@ -572,7 +572,9 @@ export default function App() {
                                 </div>
 
                                 <div className="mb-3">
-                                    <label className="form-label">Do you have eCommerce experience? (Amazon/Etsy/Shopify/eBay etc.)</label>
+                                    <label className="form-label">Do you have eCommerce experience?
+                                        <p style={{fontSize:"15px"}}>(Amazon/Etsy/Shopify/eBay etc.)</p>
+                                    </label>
                                     <div>
                                         <label>
                                             <input
@@ -652,7 +654,9 @@ export default function App() {
                                     {errors && errors.yourName && <div className="invalid-feedback">{errors.yourName}</div>}
                                 </div>
 
-                                <label className="form-label"><span className="errors">*</span>Business: (Packaged food & food products are not applicable for this submission)</label>
+                                <label className="form-label"><span className="errors">*</span>Business: 
+                                <p style={{fontSize:"15px"}}>(Packaged food & food products are not applicable.)</p>
+                                </label>
                                 <select
                                     //required
                                     className={`form-control ${errors && errors.yourSector ? 'is-invalid' : ''}`}
