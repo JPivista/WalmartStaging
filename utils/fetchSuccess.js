@@ -70,7 +70,7 @@ const SuccessStories = () => {
                 //console.log(post);
                 return (
                   <>
-                    <Col sm={6} className="p-3" key={post.id}>
+                    <Col md={6} xs={12} className="p-0 p-lg-3 mt-5 mt-lg-0" key={post.id}>
                       <Card className="story_post" >
                         {post['_embedded']['wp:featuredmedia'][0]['source_url'] && (
                           <Image
@@ -85,7 +85,7 @@ const SuccessStories = () => {
 
                         <Card.Body>
                           <Button variant="primary" className="pri-category mb-3 bogle-medium">MSME SuperPower: {post['acf']['primary_category']}</Button>
-                          <Card.Title className="fs-3 bogle-medium mb-4 story-title" dangerouslySetInnerHTML={{ __html: post['title']['rendered'] }} />
+                          <Card.Title className="fs-3 bogle-medium mb-lg-4 mb-5 story-title" dangerouslySetInnerHTML={{ __html: post['title']['rendered'] }} />
                           <h3 dangerouslySetInnerHTML={{ __html: post['acf']['author_name'] }} className="fs-4 authors bogle-medium"></h3>
                           <h3 dangerouslySetInnerHTML={{ __html: post['acf']['author_designation'] }} className="fs-7 mb-3" style={{ minHeight: 25 }}></h3>
                           <div dangerouslySetInnerHTML={{ __html: post['excerpt']['rendered'] }} className="fs-5 mb-3 m-height" style={{ minHeight: 200 }}></div>
