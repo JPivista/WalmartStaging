@@ -63,7 +63,7 @@ const SuccessStories = () => {
 
       <Container className="wbg-light-gy" fluid>
         <Container>
-          <Row className="pt-5">
+          <Row className="pt-lg-5">
             {
 
               movies.map((post, index) => {
