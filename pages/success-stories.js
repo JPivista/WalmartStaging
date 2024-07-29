@@ -14,7 +14,7 @@ import NewsLetter from '../components/NewsLetter'
 import Floating from '../components/FloatingMenu'
 import Popups from '../components/PopUps'
 import Image from 'next/image'
-
+import SuccessVideos from "../utils/fetchSuccessVideos";
 const SuccessStories = () => {
   const pathname = usePathname()
   const [movies, setMovies] = useState([]);
@@ -84,7 +84,38 @@ const SuccessStories = () => {
       return oldPage + 4;
     });
   };
+  useEffect(() => {
+    const $ = document.querySelector.bind(document);
+    const $$ = document.querySelectorAll.bind(document);
 
+    const tabs = $$(".tab-item");
+    const panes = $$(".tab-pane");
+
+    const tabActive = $(".tab-item.active");
+    const line = $(".tabs .line");
+
+    // requestIdleCallback(function () {
+    //     line.style.left = tabActive.offsetLeft + "px";
+    //     line.style.width = tabActive.offsetWidth + "px";
+
+    // });
+
+    tabs.forEach((tab, index) => {
+        const pane = panes[index];
+
+        tab.onclick = function () {
+            $(".tab-item.active").classList.remove("active");
+            $(".tab-pane.active").classList.remove("active");
+
+            line.style.left = this.offsetLeft + "px";
+            line.style.width = this.offsetWidth + "px";
+
+            this.classList.add("active");
+            pane.classList.add("active");
+        };
+    });
+
+}, []);
   return (
     <div>
       <NextSeo
@@ -135,15 +166,45 @@ const SuccessStories = () => {
 
       />
       <Brand />
-      <Container className="text-center wbg-light-gy">
+      {/* <Container className="text-center wbg-light-gy">
         <p className="fs-1 bogle-medium walmart-default" >MSME Success Stories</p>
         <Image src="/images/line-svg-png-1.png" width={100} height={20} alt="MSME Success Stories" />
         <p className="fs-3">We are proud to be part of business journeys that have turned into stories of inspiration and success. Take a look at some of our growth stories.</p>
-      </Container>
+      </Container> */}
 
-      <Success />
+      {/* <Success /> */}
       <Popups />
       <Floating />
+      <Container fluid className="wbg-main p-0 overflow-hidden">
+                <Container className="text-center">
+                    <p className="fs-2 bogle-medium text-white pt-3" >Inspiring Journeys of Walmart Vriddhi MSMEs</p>
+                    <Image src="/images/line-svg-png-1.png" width={100} height={20} alt="Industry Connect Series" />
+                </Container>
+                <Container>
+                    <div className="tabs">
+                        <div className="tab-item active" >
+                            <Image src="/images/success/time-svg.svg" alt="msme training Program online" className="img mt-2" width={50} height={50} />
+                            <span className="eael-tab-title bogle-medium walmart-default mt-2">Impact Narratives</span>
+                        </div>
+                        <div className="tab-item">
+                            <Image src="/images/success/stories-icon.svg" alt="msme training Program online" className="img mt-2" width={50} height={50} />
+                            <span className="eael-tab-title bogle-medium walmart-default mt-2">Video Stories</span>
+                        </div>
+                        <div className="line"></div>
+                    </div>
+                </Container>
+                <Container fluid className='overflow-hidden' style={{background:'#ffff'}}>
+                    <div className="tab-content">
+                        <div className="tab-pane active"  >
+                        <Success/>
+                        </div>
+                        {/* 2nd tab starts here  */}
+                        <div className="tab-pane" >
+                        <SuccessVideos/>
+                        </div>
+                        </div>
+                        </Container>
+                        </Container>
       <NewsLetter />
       <Footer />
 
