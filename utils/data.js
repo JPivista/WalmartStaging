@@ -4,7 +4,7 @@ const SuccessVideos = [
     title: "Ajay Babu’s Journey to Business Success with Walmart Vriddhi",
   },
 
-{
+  {
     image: "/images/success/wal-video.png",
     title: "The Impact Journey: How We’ve Empowered 50,000 MSMEs",
   },
