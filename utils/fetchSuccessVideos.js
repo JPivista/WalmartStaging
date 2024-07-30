@@ -5,6 +5,7 @@ import configData from "../config.json";
 import { usePathname } from 'next/navigation';
 import debounce from 'lodash.debounce';
 import { RotatingLines } from 'react-loader-spinner';
+import Aos from "aos";
 
 const FetchSuccessVideos = () => {
   const pathname = usePathname();
@@ -60,11 +61,35 @@ const FetchSuccessVideos = () => {
     setCurrentVideo(videoLink);
   };
 
+  useEffect(() => {
+    Aos.init({
+      delay: 0, // values from 0 to 3000, with step 50ms
+      duration: 400, // values from 0 to 3000, with step 50ms
+      easing: 'ease',
+    })
+  })
+
   return (
     <Container>
-      <Row className="pt-5">
+
+      <style>
+        {
+          `
+            .tab-item:hover {
+                opacity: 1;
+                background-color: #FFC221;
+                border-color: rgba(194, 53, 100, 0.1);
+            }
+
+            .tab-item:hover .walmart-default {
+                color: white;
+            }
+          `
+        }
+      </style>
+      <Row className="pt-5" data-aos="fade-up">
         {movies.map((item, index) => (
-          <Col xs={12} lg={6} key={index} className="p-3">
+          <Col xs={12} lg={6} key={index} className="p-3" >
             <Card className="rounded-0 shadow h-100">
               <div className="position-relative">
                 {/* {currentVideo === item.acf.video_link ? (

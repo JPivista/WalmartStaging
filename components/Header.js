@@ -11,6 +11,10 @@ import { FaSistrix } from 'react-icons/fa';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
+import Aos from "aos";
+import 'aos/dist/aos.css'
+
+
 const SuccessStories = () => {
   const pathname = usePathname();
   const [showLogo, setShowLogo] = useState(true);
@@ -29,6 +33,12 @@ const SuccessStories = () => {
       setShowLogo(false);
     }
   }, [pathname]);
+
+
+  useEffect(() => {
+    Aos.init({
+    }, [])
+  })
 
   return (
     <div>

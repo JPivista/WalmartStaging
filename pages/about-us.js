@@ -68,7 +68,7 @@ function ContainerExample() {
       <Brand />
       <Container>
         <Row>
-          <Col className="text-center">
+          <Col className="text-center" data-aos="fade-up">
             <p className="fs-1 bogle-medium walmart-default mt-4">About Walmart Vriddhi</p>
 
             <p className="col-md-8 mx-auto text-center fs-4">Walmart and Flipkart have made a long-term commitment to transform India’s MSME ecosystem by empowering 50,000 MSMEs. We strive to play a catalytic role by supporting small businesses with growth opportunities to reach greater heights and new markets.

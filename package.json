@@ -20,6 +20,7 @@
     "@types/react-dom": "18.0.9",
     "@vercel/analytics": "^1.1.1",
     "@vercel/speed-insights": "^1.0.2",
+    "aos": "^2.3.4",
     "axios": "^1.6.3",
     "bootstrap": "^5.2.3",
     "cookie-consent-js": "^2.1.8",
