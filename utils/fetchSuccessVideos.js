@@ -25,7 +25,10 @@ const FetchSuccessVideos = () => {
 
       const moviesData = await moviesResponse.json();
       const categoriesData = await categoriesResponse.json();
-      console.log(moviesData)
+      // console.log(moviesData)
+
+      const sortedMoviesData = moviesData.sort((a, b) => new Date(a.date) - new Date(b.date));
+
       if (moviesData.length === 0) {
         setEnd(true);
       } else {
