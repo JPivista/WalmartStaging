@@ -14,30 +14,27 @@ import Floating from "../components/FloatingMenu";
 import Popups from "../components/PopUps";
 
 export default function App() {
-  const [hasGst, setHasGst] = useState(false);
+  const [isGst, setIsGst] = useState(false);
   const [gstNumber, setGstNumber] = useState('');
   const [gstError, setGstError] = useState('');
-
-//   const handleTextChange = (event) => {
-//     setGstNumber(event.target.value);
-//     validateGstNumber(event.target.value);
-//   };
 
   const validateGstNumber = (number) => {
     const gstRegex = /^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[A-Z0-9]{1}Z[A-Z0-9]{1}$/;
     if (gstRegex.test(number)) {
       setGstError('');
     } else {
-      setGstError('Please enter a valid alphanumeric GST Number');
+      setGstError('Please enter a valid GST Number');
     }
   };
+
   const handleGstChange = (event) => {
-    setHasGst(event.target.value === 'yes');
-    if (event.target.value === 'no') {
+    const value = event.target.value;
+    setIsGst(value === 'yes');
+    if (value === 'no') {
       setGstNumber(''); // Clear the GST number if "No" is selected
       setGstError('');  // Clear any error messages
     }
-  };    
+  };   
   const resetForm = () => {
     setBusiness("");
     setFromTypes("");
@@ -342,7 +339,8 @@ export default function App() {
   const handleTextChange = (e) => {
     const value = e.target.value;
     const fname = e.target.name;
-
+    
+    
     if (fname === "yourBusiness") {
       if (!businessRegex.test(value)) {
         console.log("invalid details");
@@ -357,7 +355,11 @@ export default function App() {
         setErrors();
       }
     }
-    if (fname === "yourGst") {
+    if 
+     (fname === "yourGst")
+{
+  setGstNumber(e.target.value);
+  validateGstNumber(e.target.value);
       if (!gstRegex.test(value)) {
         console.log("invalid details");
         const fieldErrors = {};
@@ -465,7 +467,7 @@ export default function App() {
         {
           yourBusiness: { yourBusiness },
           yourType: { yourType },
-          yourName: { yourName },
+          yourName: { yourName },t
           yourSector: { yourSector },
           yourGst: { yourGst },
           yourState: { yourState },
@@ -685,6 +687,7 @@ export default function App() {
                 )}
                 {/* gst field starts */}
                 <div>
+      <div>
         <label className="form-label mt-2">
           <span className="errors">*</span>Do you have GST Registration:
         </label>
@@ -700,7 +703,6 @@ export default function App() {
         </div>
         <div>
           <input
-          
             type="radio"
             id="gstNo"
             name="gstRegistration"
@@ -710,33 +712,27 @@ export default function App() {
           <label htmlFor="gstNo" className="mx-1">No</label>
         </div>
       </div>
-                
-                <div>
 
-      {hasGst && (
-        <div  className={` ${
-            errors && errors.yourGst ? "is-invalid" : ""
-          }`}>
+      {isGst && (
+        <div className={`mt-2 ${gstError ? 'is-invalid' : ''}`}>
           <div><label htmlFor="gstNumber">GST Registration Number:</label></div>
           <input
-          maxLength={15}
+            maxLength={15}
             type="text"
             id="gstNumber"
             name="yourGst"
-            value={yourGst}
-            defaultValue={yourGst}
+            value={gstNumber}
             onChange={handleTextChange}
             placeholder="Enter your GST number"
-            className={`form-input mt-1 rounded border p-2 w-75  ${gstError ? 'border-danger' : ''}`}
+            className={`form-input mt-1 rounded border p-2 w-75 text-uppercase ${gstError ? 'border-danger' : ''}`}
           />
-          {gstError && (
-            <p className="text-danger mt-1">{gstError}</p>
-          )}
         </div>
       )}
-    </div> {errors && errors.yourGst && (
-                  <div className="invalid-feedback">{errors.yourGst}</div>
-                )}
+
+      {gstError && (
+        <p className="text-danger mt-1">{gstError}</p>
+      )}
+    </div>
     {/* gst field ends */}
 
                 <label className="form-label mt-2">
