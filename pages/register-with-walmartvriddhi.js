@@ -467,7 +467,7 @@ export default function App() {
         {
           yourBusiness: { yourBusiness },
           yourType: { yourType },
-          yourName: { yourName },t
+          yourName: { yourName },
           yourSector: { yourSector },
           yourGst: { yourGst },
           yourState: { yourState },
