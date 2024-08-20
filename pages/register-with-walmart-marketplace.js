@@ -22,7 +22,7 @@ export default function App() {
         setFromSectors('');
         setPhone('');
         setEmail('');
-        setState('');
+        setState(''); 
         setCity('');
         setSelectedSource("");
         setExporting('');

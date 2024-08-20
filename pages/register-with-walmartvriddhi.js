@@ -29,12 +29,13 @@ export default function App() {
 
   const handleGstChange = (event) => {
     const value = event.target.value;
+    setGst(value);
     setIsGst(value === 'yes');
     if (value === 'no') {
       setGstNumber(''); // Clear the GST number if "No" is selected
       setGstError('');  // Clear any error messages
     }
-  };   
+  };    
   const resetForm = () => {
     setBusiness("");
     setFromTypes("");
@@ -47,6 +48,7 @@ export default function App() {
     setCity("");
     setSelectedSource("");
     setOtherSource("");
+    // setGstNumber("");
     SetSelectCountry("IN");
     SetSelectState("KA");
     // Add any additional state variables that need to be reset
@@ -208,7 +210,7 @@ export default function App() {
   const [errors, setErrors] = useState({});
   const [error, setError] = useState("");
   const [yourBusiness, setBusiness] = React.useState(null);
-  const [yourGst, setGst ] = React.useState(null);
+  const [yourGst, setGst ] = React.useState('no');
   const [yourType, setFromTypes] = React.useState(null);
   const [yourName, setName] = React.useState(null);
   const [yourSector, setFromSectors] = React.useState(null);
@@ -433,6 +435,9 @@ export default function App() {
   const handleSubmit = async (event) => {
     // 👇️ prevent page refresh
     event.preventDefault();
+    setIsGst(false);
+    setGstNumber('');
+    setGstError('');
 
     try {
       const token = await new Promise((resolve, reject) => {
@@ -697,6 +702,7 @@ export default function App() {
             id="gstYes"
             name="gstRegistration"
             value="yes"
+            checked={yourGst === "yes"}
             onChange={handleGstChange}
           />
           <label htmlFor="gstYes" className="mx-1">Yes</label>
@@ -707,6 +713,7 @@ export default function App() {
             id="gstNo"
             name="gstRegistration"
             value="no"
+            checked={yourGst === "no"}
             onChange={handleGstChange}
           />
           <label htmlFor="gstNo" className="mx-1">No</label>
